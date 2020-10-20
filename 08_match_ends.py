@@ -20,7 +20,7 @@ def solucao1(words):
 
 def solucao2(words):
     a = list()
-    [a.append(w) if len(w) >= 2 and w[0] == w[-1] else a for w in words]
+    [a.append(w) for w in words if len(w) >= 2 and w[0] == w[-1]]
     return len(a)
 
 def solucao3(words):
