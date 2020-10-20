@@ -12,8 +12,11 @@ antes de combina-las.
 """
 
 def front_x(words):
-    # +++ SUA SOLUÇÃO +++
-    return
+    palavras_que_comecam_com_x = []
+    palavras_que_nao_comecam_com_x = []
+    [palavras_que_comecam_com_x.append(w) for w in words if w.startswith('x')]
+    [palavras_que_nao_comecam_com_x.append(w) for w in words if not w.startswith('x')]
+    return sorted(palavras_que_comecam_com_x) + sorted(palavras_que_nao_comecam_com_x)
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
