@@ -11,9 +11,29 @@ Finalmente, dadas duas strings a e b, retorne uma string na forma:
 a-frente + b-frente + a-trás + b-trás
 """
 def front_back(a, b):
-    # +++ SUA SOLUÇÃO +++
-    return
+    tamanho_a = len(a)
+    tamanho_b = len(b)
 
+    result = ['', '', '', '']
+
+    if (eh_par(a)):
+        result[0] = a[:tamanho_a//2]
+        result[2] = a[tamanho_a//2:]
+    else:
+        result[0] = a[:tamanho_a//2 + 1]
+        result[2] = a[tamanho_a//2 + 1:]
+
+    if (eh_par(b)):
+        result[1] = b[:tamanho_b//2]
+        result[3] = b[tamanho_b//2:]
+    else:
+        result[1] = b[:tamanho_b//2 + 1]
+        result[3] = b[tamanho_b//2 + 1:]
+
+    return ''.join(result)
+
+def eh_par(s):
+    return len(s) % 2 == 0
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
