@@ -12,10 +12,11 @@ Exemplo:
 Assuma que a e b tem tamanho 2 ou maior.
 """
 
-def mix_up(a, b):
-    # +++ SUA SOLUÇÃO +++
-    return
-
+def mix_up(a, b, quantidade_de_caracteres=2):
+    if (len(a) <= quantidade_de_caracteres or len(b) <= quantidade_de_caracteres):
+        return ' '
+    return ' '.join([b[:quantidade_de_caracteres] + a[quantidade_de_caracteres:],
+                     a[:quantidade_de_caracteres] + b[quantidade_de_caracteres:]])
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
@@ -42,3 +43,6 @@ if __name__ == '__main__':
     test(mix_up, ('dog', 'dinner'), 'dig donner')
     test(mix_up, ('gnash', 'sport'), 'spash gnort')
     test(mix_up, ('pezzy', 'firm'), 'fizzy perm')
+    test(mix_up, ('ab', 'cd'), ' ')
+    test(mix_up, ('a', 'c'), ' ')
+

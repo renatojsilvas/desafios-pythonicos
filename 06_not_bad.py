@@ -9,9 +9,21 @@ por 'good' e retorne a string resultante.
 Exemplo: 'The dinner is not that bad!' retorna 'The dinner is good!'
 """
 
+import re
+
 def not_bad(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+    result_of_search = re.search(r'(not\s\w*?\s?bad)', s)
+    if result_of_search:
+        s = s.replace(result_of_search.group(), 'good')
+    return s
+
+
+
+
+
+
+
+
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -39,3 +51,6 @@ if __name__ == '__main__':
     test(not_bad, 'This dinner is not that bad!', 'This dinner is good!')
     test(not_bad, 'This tea is not hot', 'This tea is not hot')
     test(not_bad, "It's bad yet not", "It's bad yet not")
+    test(not_bad, "This movie is not not so bad", "This movie is not good")
+    test(not_bad, "This movie is not bad not bad", "This movie is good good")
+    test(not_bad, "This movie is bad but not so bad?", "This movie is bad but good?")

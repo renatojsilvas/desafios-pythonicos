@@ -7,10 +7,20 @@ Exemplo: 'spring' retorna 'spng'. Entretanto, se o tamanho da string
 for menor que 2, retorne uma string vazia.
 """
 
-def both_ends(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+def both_ends(s, minimo_numero_de_caracteres = 2, numero_de_caracteres_do_inicio=2, numero_de_caracteres_do_fim=2):
+    if tamanho_da_string(s) < minimo_numero_de_caracteres:
+        return ''
+    return primeiros_caracteres(s, numero_de_caracteres_do_inicio) + \
+           ultimos_caracteres(s, numero_de_caracteres_do_fim)
 
+def tamanho_da_string(s):
+    return len(s)
+
+def primeiros_caracteres(s, caracteres):
+    return s[:caracteres]
+
+def ultimos_caracteres(s, caracteres):
+    return s[-caracteres:]
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
