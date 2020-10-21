@@ -9,9 +9,17 @@ Irá retornar: [1, 2, 3]
 """
 
 def remove_adjacent(nums):
+    return solucao2(nums)
+
+def solucao1(nums):
     nova_lista = []
     [nova_lista.append(nums[i]) for i, j in enumerate(nums) if i == 0 or nums[i - 1] != nums[i]]
     return nova_lista
+
+def solucao2(nums):
+   if (nums == []):
+       return []
+   return [i for i, j in zip(nums, nums[1:] + [not nums[-1]]) if i != j]
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
