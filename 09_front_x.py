@@ -10,13 +10,20 @@ Irá retornar: ['xanadu', 'xyz', 'aardvark', 'apple', 'banana' ,'mix']
 Dica: Isso pode ser resolvido criando 2 listas e ordenando cada uma
 antes de combina-las.
 """
+import functools
 
 def front_x(words):
+    return solucao2(words)
+
+def solucao1(words):
     palavras_que_comecam_com_x = []
     palavras_que_nao_comecam_com_x = []
     [palavras_que_comecam_com_x.append(w) for w in words if w.startswith('x')]
     [palavras_que_nao_comecam_com_x.append(w) for w in words if not w.startswith('x')]
     return sorted(palavras_que_comecam_com_x) + sorted(palavras_que_nao_comecam_com_x)
+
+def solucao2(words):
+    return sorted(words, key=lambda w: (not w.startswith('x'), w))
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
