@@ -54,6 +54,7 @@ e conferindo cada etapa do seu progresso.
 import sys
 from collections import Counter
 
+
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
 
@@ -68,42 +69,48 @@ def main():
     option = sys.argv[1]
     filename = sys.argv[2]
     if option == '--count':
-        print_words(filename)
+        processa(filename, print_words)
     elif option == '--topcount':
-        print_top(filename)
+        processa(filename, print_top)
     else:
         print('unknown option: ' + option)
         sys.exit(1)
 
-def print_words(filename):
-    print('print_words')
-    f = open(filename)
-    conteudo_do_arquivo = []
-    while True:
-        linha = f.readline()
-        if not linha:
-            break
-        conteudo_do_arquivo.append(linha.split())
-    f.close()
-    lista = lambda t: [item.lower() for sublist in t for item in sublist]
-    oc = sorted(list(dict((i, lista(conteudo_do_arquivo).count(i)) for i in lista(conteudo_do_arquivo)).items()))
-    for i, j in oc:
-        print(i, j)
 
-def print_top(filename):
-    print('print_top')
+def processa(filename, metodo):
+    # lê o conteúdo do arquivo -> entrada
+    conteudo_do_arquivo = le_o_arquivo(filename)
+    # processa o algoritmo -> processamento
+    resultado = metodo(conteudo_do_arquivo)
+    # imprime -> saída
+    imprime_resultado(resultado)
+
+
+def le_o_arquivo(filename):
     f = open(filename)
-    conteudo_do_arquivo = []
+    linhas = []
     while True:
         linha = f.readline()
         if not linha:
             break
-        conteudo_do_arquivo.append(linha.split())
+        linhas.append(linha.split())
     f.close()
-    lista = lambda t: [item.lower() for sublist in t for item in sublist]
-    oc = Counter(lista(conteudo_do_arquivo)).most_common(20)
-    for i, j in oc:
-        print(i, j)
+    converte_listas_para_lista = lambda t: [item.lower() for sublist in t for item in sublist]
+    return converte_listas_para_lista(linhas)
+
+
+def imprime_resultado(resultado):
+    for letra, quantidade in resultado:
+        print(letra, quantidade)
+
+
+def print_words(conteudo_do_arquivo):
+    return sorted(list(dict((i, conteudo_do_arquivo.count(i)) for i in conteudo_do_arquivo).items()))
+
+
+def print_top(conteudo_do_arquivo, quantidade_de_palavras_mais_comuns=20):
+    return Counter(conteudo_do_arquivo).most_common(quantidade_de_palavras_mais_comuns)
+
 
 if __name__ == '__main__':
     main()
