@@ -9,11 +9,16 @@ A sua solução deve rodar em tempo linear, ou seja, deve fazer uma
 única passagem em cada uma das listas.
 """
 
+import heapq
+
 def linear_merge(list1, list2):
-    return solucao1(list1, list2)
+    return solucao2(list1, list2)
 
 def solucao1(list1, list2):
     return sorted(list1 + list2)
+
+def solucao2(list1, list2):
+    return list(heapq.merge(list1, list2))
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
